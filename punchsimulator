@@ -20,6 +20,15 @@ local Tab = Window:MakeTab({
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
+local Section = Tab:AddSection({
+	Name = "Automatic"
+})
+Tab:AddButton({
+	Name = "Auto Punch (on fight)",
+	Callback = function()
+		while true do wait() if game:GetService("Players").LocalPlayer.PlayerGui.FightingMainUi.Enabled == true then game:GetService("VirtualInputManager"):SendMouseButtonEvent(1, 1, 0, true, game, 0) end end
+  	end    
+})
 local autotrain = false
 Tab:AddToggle({
 	Name = "Auto Train",
@@ -29,17 +38,6 @@ Tab:AddToggle({
 	end    
 })
 while true do wait() if autotrain == true then game:GetService("ReplicatedStorage").Events.DamageIncreaseOnClickEvent:FireServer() end end
-
---local teleportui = false
---Tab:AddToggle({
-	--Name = "Teleport UI",
-	--Default = false,
-	--Callback = function(Value)
-	--	teleportui = Value
-	--end    
---})
---while true do wait() if teleportui == true then game:GetService("ReplicatedStorage").Events.TeleportEvent end end
-
 
 end 
 
