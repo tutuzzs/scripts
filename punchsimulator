@@ -1,5 +1,5 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "hitler hub", HidePremium = false, SaveConfig = false, ConfigFolder = "testetutuz"})
+local Window = OrionLib:MakeWindow({Name = "Tutuz HUB", HidePremium = false, SaveConfig = false, ConfigFolder = "testetutuz"})
 local Tab = Window:MakeTab({
 	Name = "Main",
 	Icon = "rbxassetid://4483345998",
@@ -7,7 +7,7 @@ local Tab = Window:MakeTab({
 })
 local autotrain = false
 Tab:AddToggle({
-	Name = "Auto Campo de Concentração",
+	Name = "Auto Train",
 	Default = false,
 	Callback = function(Value)
 		autotrain = Value
