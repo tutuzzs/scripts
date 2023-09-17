@@ -1,0 +1,26 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "hitler hub", HidePremium = false, SaveConfig = false, ConfigFolder = "testetutuz"})
+local Tab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local autotrain = false
+Tab:AddToggle({
+	Name = "Auto Campo de Concentração",
+	Default = false,
+	Callback = function(Value)
+		autotrain = Value
+	end    
+})
+while true do wait() if autotrain == true then game:GetService("ReplicatedStorage").Events.DamageIncreaseOnClickEvent:FireServer() end end
+
+--local teleportui = false
+--Tab:AddToggle({
+	--Name = "Teleport UI",
+	--Default = false,
+	--Callback = function(Value)
+	--	teleportui = Value
+	--end    
+--})
+--while true do wait() if teleportui == true then game:GetService("ReplicatedStorage").Events.TeleportEvent end end
