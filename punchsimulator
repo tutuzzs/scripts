@@ -25,11 +25,15 @@ local Tab = Window:MakeTab({
 local Section = Tab:AddSection({
 	Name = "Automatic"
 })
-Tab:AddButton({
+local autotrain = false
+local autopunch = false
+local autorebirth = false
+Tab:AddToggle({
 	Name = "Auto Punch (on fight)",
-	Callback = function()
-		while true do wait() if game:GetService("Players").LocalPlayer.PlayerGui.FightingMainUi.Enabled == true then game:GetService("VirtualInputManager"):SendMouseButtonEvent(1, 1, 0, true, game, 0) end end
-  	end    
+	Default = false,
+	Callback = function(Value)
+		autopunch = Value
+	end    
 })
 local autotrain = false
 Tab:AddToggle({
@@ -39,8 +43,25 @@ Tab:AddToggle({
 		autotrain = Value
 	end    
 })
-while true do wait() if autotrain == true then game:GetService("ReplicatedStorage").Events.DamageIncreaseOnClickEvent:FireServer() end end
-
+Tab:AddToggle({
+	Name = "Auto Rebirth",
+	Default = false,
+	Callback = function(Value)
+		autorebirth = Value
+	end    
+})
+function punchFunc()
+if game:GetService("Players").LocalPlayer.PlayerGui.FightingMainUi.Enabled == true then game:GetService("VirtualInputManager"):SendMouseButtonEvent(1, 1, 0, true, game, 0) end
+end
+function trainFunc()
+game:GetService("ReplicatedStorage").Events.DamageIncreaseOnClickEvent:FireServer()
+end
+function rebirthFunc()
+	game:GetService("ReplicatedStorage").Events.AscendEvent:FireServer()
+	end
+local c1 = coroutine.create(function() while true do if autopunch then punchFunc() end wait() end end) coroutine.resume(c1)
+local c2 = coroutine.create(function() while true do if autotrain then trainFunc() end wait() end end) coroutine.resume(c2)
+local c3 = coroutine.create(function() while true do if autorebirth then rebirthFunc() end wait() end end) coroutine.resume(c3)
 end 
 
 local TPTab = Window:MakeTab({
@@ -97,4 +118,3 @@ Tab:AddButton({
         end
   	end    
 })
-
