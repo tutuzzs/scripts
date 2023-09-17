@@ -48,6 +48,9 @@ local TPTab = Window:MakeTab({
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
+local Section = Tab:AddSection({
+	Name = "Teleports"
+})
 function CorrectKeyNotification()
 OrionLib:MakeNotification({
 	Name = "Correct Key!",
