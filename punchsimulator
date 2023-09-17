@@ -13,6 +13,8 @@ _G.Key = "DAORA123"
 _G.KeyInput = "string"
 
 function MakeScriptHub()
+if game.PlaceId == 14236123211 then
+
     local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "Tutuz HUB", HidePremium = false, SaveConfig = false, ConfigFolder = "testetutuz"})
 local Tab = Window:MakeTab({
@@ -41,6 +43,11 @@ while true do wait() if autotrain == true then game:GetService("ReplicatedStorag
 
 end 
 
+local TPTab = Window:MakeTab({
+	Name = "Teleport",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
 function CorrectKeyNotification()
 OrionLib:MakeNotification({
 	Name = "Correct Key!",
@@ -49,6 +56,7 @@ OrionLib:MakeNotification({
 	Time = 5
 })
 end
+end 
 
 function IncorrectKeyNotification()
 OrionLib:MakeNotification({
